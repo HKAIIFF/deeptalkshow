@@ -63,36 +63,6 @@
             color: transparent;
         }
         
-        .gradient-bg {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-        }
-        
-        .accent-bg {
-            background: rgba(0, 255, 157, 0.1);
-            border: 1px solid rgba(0, 255, 157, 0.2);
-        }
-        
-        .card {
-            background-color: rgba(26, 32, 44, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-        
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 255, 157, 0.2);
-            border-color: rgba(0, 255, 157, 0.3);
-        }
-        
-        .navbar {
-            background-color: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 255, 157, 0.1);
-        }
-        
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             transition: all 0.3s ease;
@@ -116,6 +86,12 @@
         .btn-secondary:hover {
             background-color: rgba(0, 255, 157, 0.1);
             transform: translateY(-3px);
+        }
+        
+        .navbar {
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 157, 0.1);
         }
         
         .hero {
@@ -162,222 +138,14 @@
             100% { background-position: 0% 0%; }
         }
         
-        .floating {
-            animation: floating 6s ease-in-out infinite;
-        }
-        
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-        
         .animate-fade-in {
             animation: fadeIn 1s ease-in-out forwards;
-            opacity: 0;
-        }
-        
-        .animate-slide-up {
-            animation: slideUp 0.8s ease-in-out forwards;
-            opacity: 0;
-        }
-        
-        .animate-slide-right {
-            animation: slideRight 0.8s ease-in-out forwards;
             opacity: 0;
         }
         
         @keyframes fadeIn {
             from { opacity: 0; transform: scale(0.95); }
             to { opacity: 1; transform: scale(1); }
-        }
-        
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        @keyframes slideRight {
-            from { transform: translateX(-50px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        
-        .ai-element {
-            position: absolute;
-            background-color: rgba(102, 126, 234, 0.1);
-            border: 1px solid rgba(102, 126, 234, 0.3);
-            backdrop-filter: blur(5px);
-            padding: 10px;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 12px;
-            color: var(--accent);
-            z-index: 3;
-            pointer-events: none;
-            box-shadow: 0 0 15px rgba(0, 255, 157, 0.1);
-        }
-        
-        .data-stream {
-            position: absolute;
-            height: 100px;
-            width: 2px;
-            background: linear-gradient(to bottom, transparent, var(--accent), var(--secondary), transparent);
-            z-index: 0;
-            animation: dataStream 2s linear infinite;
-            opacity: 0.3;
-        }
-        
-        @keyframes dataStream {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(100vh); }
-        }
-        
-        .conversation-demo {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-            max-height: 400px;
-            overflow-y: auto;
-        }
-        
-        .message {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: flex-start;
-            animation: fadeInMessage 0.5s ease-in-out;
-        }
-        
-        @keyframes fadeInMessage {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .message.talker {
-            justify-content: flex-end;
-        }
-        
-        .message-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            margin-right: 10px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: bold;
-        }
-        
-        .message.talker .message-avatar {
-            margin-left: 10px;
-            margin-right: 0;
-            background: linear-gradient(135deg, #f39c12, #e74c3c);
-        }
-        
-        .message-content {
-            max-width: 70%;
-            padding: 12px 16px;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .message.talker .message-content {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
-            border-color: rgba(102, 126, 234, 0.3);
-        }
-        
-        .typing-indicator {
-            display: flex;
-            align-items: center;
-            padding: 12px 16px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            margin-left: 42px;
-        }
-        
-        .typing-dots {
-            display: flex;
-            gap: 4px;
-        }
-        
-        .typing-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--accent);
-            animation: typingDot 1.4s infinite;
-        }
-        
-        .typing-dot:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        
-        .typing-dot:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-        
-        @keyframes typingDot {
-            0%, 60%, 100% { opacity: 0.3; }
-            30% { opacity: 1; }
-        }
-        
-        .being-card {
-            background: linear-gradient(145deg, rgba(26, 32, 44, 0.7), rgba(45, 55, 72, 0.7));
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 24px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .being-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
-            border-color: var(--accent);
-        }
-        
-        .being-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(102, 126, 234, 0.05) 45%, rgba(118, 75, 162, 0.05) 55%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .being-card:hover::before {
-            opacity: 1;
-        }
-        
-        .being-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin-bottom: 16px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .price-tag {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: white;
         }
         
         .stats-grid {
@@ -412,6 +180,259 @@
             margin-bottom: 8px;
         }
         
+        /* Topic Card Styles */
+        .topic-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .topic-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 30px rgba(0, 255, 157, 0.1);
+        }
+        
+        .topic-status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .status-live {
+            background: rgba(255, 0, 0, 0.2);
+            color: #ff4444;
+            border: 1px solid #ff4444;
+        }
+        
+        .status-active {
+            background: rgba(0, 255, 157, 0.2);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+        
+        .status-archived {
+            background: rgba(128, 128, 128, 0.2);
+            color: #888;
+            border: 1px solid #888;
+        }
+        
+        .topic-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .topic-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-right: 15px;
+            position: relative;
+        }
+        
+        .topic-info h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .topic-participants {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+        
+        .topic-description {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .topic-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .topic-stats-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+        
+        .topic-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-topic {
+            flex: 1;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-listen {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+        }
+        
+        .btn-join {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+        
+        .btn-topic:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Being Card Styles */
+        .being-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .being-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 30px rgba(0, 255, 157, 0.1);
+        }
+        
+        .being-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .being-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-right: 15px;
+            position: relative;
+        }
+        
+        .being-info h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .being-creator {
+            font-size: 0.8rem;
+            color: #888;
+        }
+        
+        .being-description {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .being-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .being-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+        }
+        
+        .being-topics-count {
+            font-size: 0.8rem;
+            color: var(--accent);
+        }
+        
+        .being-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .being-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            color: #aaa;
+        }
+        
+        .being-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-being {
+            flex: 1;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-view-topics {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+        }
+        
+        .btn-create-topic {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+        
+        .btn-being:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Ecosystem Diagram */
         .ecosystem-diagram {
             display: grid;
             grid-template-columns: 1fr 2fr 1fr;
@@ -443,54 +464,72 @@
             box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
         }
         
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 300px;
-            height: 100vh;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 20px;
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-        }
-        
-        .mobile-menu.open {
-            transform: translateX(0);
-        }
-        
-        .input-field {
-            background: rgba(255, 255, 255, 0.05);
+        /* Demo Chat Styles */
+        .demo-chat-container {
+            background: rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            color: white;
-            transition: all 0.3s ease;
+            border-radius: 20px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            max-height: 500px;
+            overflow-y: auto;
         }
         
-        .input-field:focus {
-            outline: none;
-            border-color: var(--accent);
-            background: rgba(255, 255, 255, 0.08);
+        .demo-message {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            animation: fadeInMessage 0.5s ease-in-out;
         }
         
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
+        @keyframes fadeInMessage {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        ::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.1);
+        .demo-message.listener {
+            justify-content: flex-end;
         }
         
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 4px;
+        .demo-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
         }
         
-        /* Responsive adjustments */
+        .demo-message.listener .demo-avatar {
+            margin-left: 10px;
+            margin-right: 0;
+            background: linear-gradient(135deg, #f39c12, #e74c3c);
+        }
+        
+        .demo-content {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .demo-message.listener .demo-content {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+        
+        .demo-role {
+            font-size: 0.7rem;
+            color: #888;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
             .ecosystem-diagram {
                 grid-template-columns: 1fr;
@@ -504,33 +543,33 @@
             .logo-font {
                 font-size: 1.8rem;
             }
-            
-            .conversation-demo {
-                max-height: 300px;
-            }
+        }
+        
+        .filter-pill {
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            min-width: fit-content;
+        }
+        
+        .filter-pill.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-color: transparent;
+            color: white;
+        }
+        
+        .filter-pill:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent);
         }
     </style>
 </head>
 <body>
-    <!-- AI Elements -->
-    <div class="ai-element" style="top: 120px; left: 10%;">
-        BEING_STATUS: ACTIVE <br>
-        TALKER_ID: TLK-2847 <br>
-        // AI Conversation Live
-    </div>
-    
-    <div class="ai-element" style="bottom: 150px; right: 15%;">
-        KNOWLEDGE_SYNC: 99.7% <br>
-        WISDOM_FLOW: OPTIMAL <br>
-        // Deep Learning Active
-    </div>
-    
-    <!-- Data streams -->
-    <div class="data-stream" style="left: 20%; animation-delay: 0s;"></div>
-    <div class="data-stream" style="left: 40%; animation-delay: 0.5s;"></div>
-    <div class="data-stream" style="left: 60%; animation-delay: 1s;"></div>
-    <div class="data-stream" style="left: 80%; animation-delay: 1.5s;"></div>
-
     <!-- Navigation -->
     <nav class="navbar fixed w-full z-50 px-4 py-3">
         <div class="container mx-auto flex justify-between items-center">
@@ -539,14 +578,14 @@
                 <div class="logo-sub">AI NATIVE DIALOGUE</div>
             </a>
             <div class="hidden md:flex space-x-8">
-                <a href="#features" class="hover:text-blue-400 transition">功能特色</a>
-                <a href="#beings" class="hover:text-blue-400 transition">AI Being</a>
-                <a href="#demo" class="hover:text-blue-400 transition">对话演示</a>
+                <a href="#topics" class="hover:text-blue-400 transition">热门话题</a>
+                <a href="#beings" class="hover:text-blue-400 transition">Being Home</a>
+                <a href="#demo" class="hover:text-blue-400 transition">话题演示</a>
                 <a href="#pricing" class="hover:text-blue-400 transition">定价方案</a>
                 <a href="#ecosystem" class="hover:text-blue-400 transition">生态体系</a>
             </div>
             <div class="flex items-center space-x-4">
-                <a href="#login" class="btn-primary px-6 py-2 rounded-full text-sm">开始对话</a>
+                <a href="#login" class="btn-primary px-6 py-2 rounded-full text-sm">加入DeepTalk</a>
                 <button class="md:hidden text-white" id="mobile-menu-btn">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
@@ -565,76 +604,125 @@
                         <span class="gradient-text">对话的无限可能</span>
                     </h1>
                     <p class="text-xl text-gray-300 mb-8 leading-relaxed">
-                        DeepTalk突破人类知识边界，通过AI Being技术让世界顶级专家的智慧触手可及。
+                        DeepTalk突破传统播客限制，构建AI Being、Talker、Listener三方协作的全新智慧共创模式。
                         每一次对话都是智慧的碰撞与创新，让知识的传承和创造永不停歇。
                     </p>
                     <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-12">
-                        <a href="#demo" class="btn-primary px-8 py-4 rounded-full font-medium text-center">
+                        <a href="#topics" class="btn-primary px-8 py-4 rounded-full font-medium text-center">
                             <i class="fas fa-play mr-2"></i>
-                            体验AI对话
+                            探索热门话题
                         </a>
                         <a href="#beings" class="btn-secondary px-8 py-4 rounded-full font-medium text-center">
                             <i class="fas fa-robot mr-2"></i>
-                            探索AI Being
+                            访问Being Home
                         </a>
                     </div>
                     
                     <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">100+</div>
+                            <div class="text-sm text-gray-400">活跃话题</div>
+                        </div>
                         <div class="stat-card">
                             <div class="stat-number">1000+</div>
                             <div class="text-sm text-gray-400">专业AI Being</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-number">50K+</div>
-                            <div class="text-sm text-gray-400">活跃对话者</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">24/7</div>
-                            <div class="text-sm text-gray-400">智慧对话</div>
+                            <div class="text-sm text-gray-400">Listener社区</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-number">∞</div>
-                            <div class="text-sm text-gray-400">知识深度</div>
+                            <div class="text-sm text-gray-400">智慧深度</div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Live Conversation Demo -->
+                <!-- Live Topics Preview -->
                 <div class="animate-fade-in">
-                    <div class="conversation-demo">
-                        <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-lg font-semibold">实时对话演示</h3>
-                            <div class="flex items-center text-green-400">
-                                <div class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                    <div class="bg-gray-900 bg-opacity-60 rounded-20 p-6 backdrop-filter backdrop-blur-10">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-xl font-bold">正在进行的话题</h3>
+                            <div class="flex items-center text-red-400">
+                                <div class="w-2 h-2 bg-red-400 rounded-full mr-2 animate-pulse"></div>
                                 Live
                             </div>
                         </div>
                         
-                        <div id="conversation-container">
-                            <div class="message">
-                                <div class="message-avatar">🧠</div>
-                                <div class="message-content">
-                                    <div class="text-xs text-gray-400 mb-1">心理学大师Being</div>
-                                    <div>欢迎来到DeepTalk！我是基于荣格、弗洛伊德等大师理论构建的心理学AI Being。有什么心理学问题想要探讨吗？</div>
+                        <div class="space-y-4">
+                            <div class="topic-card">
+                                <div class="topic-status status-live">直播中</div>
+                                <div class="topic-header">
+                                    <div class="topic-avatar" style="background: linear-gradient(135deg, #ff6b9d, #c44569);">🧠</div>
+                                    <div class="topic-info">
+                                        <h3>AI时代的心理健康挑战</h3>
+                                        <div class="topic-participants">
+                                            <span>Dr. Sophia</span> × <span>心理学专家 张教授</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="topic-description">
+                                    探讨人工智能快速发展对人类心理健康带来的机遇与挑战，以及如何在AI时代保持心理平衡...
+                                </div>
+                                <div class="topic-stats">
+                                    <div class="topic-stats-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>2.3K 收听</span>
+                                    </div>
+                                    <div class="topic-stats-item">
+                                        <i class="fas fa-comments"></i>
+                                        <span>156 参与</span>
+                                    </div>
+                                    <div class="topic-stats-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>45分钟</span>
+                                    </div>
+                                </div>
+                                <div class="topic-actions">
+                                    <button class="btn-topic btn-listen">立即收听</button>
+                                    <button class="btn-topic btn-join">加入讨论</button>
                                 </div>
                             </div>
                             
-                            <div class="message talker">
-                                <div class="message-content">
-                                    <div class="text-xs text-gray-400 mb-1">Talker: 李明</div>
-                                    <div>我最近在工作中总是感到焦虑，即使是很小的事情也会让我紧张。这是为什么呢？</div>
+                            <div class="topic-card">
+                                <div class="topic-status status-active">活跃</div>
+                                <div class="topic-header">
+                                    <div class="topic-avatar" style="background: linear-gradient(135deg, #4ecdc4, #44a08d);">💰</div>
+                                    <div class="topic-info">
+                                        <h3>2025年投资策略展望</h3>
+                                        <div class="topic-participants">
+                                            <span>Warren AI</span> × <span>投资顾问 李总</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="message-avatar">👨</div>
-                            </div>
-                            
-                            <div class="typing-indicator" id="typing">
-                                <div class="typing-dots">
-                                    <div class="typing-dot"></div>
-                                    <div class="typing-dot"></div>
-                                    <div class="typing-dot"></div>
+                                <div class="topic-description">
+                                    基于当前经济形势和AI技术发展，深度分析2025年的投资机会和风险管理策略...
                                 </div>
-                                <span class="ml-2 text-sm text-gray-400">心理学大师Being 正在思考...</span>
+                                <div class="topic-stats">
+                                    <div class="topic-stats-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>1.8K 收听</span>
+                                    </div>
+                                    <div class="topic-stats-item">
+                                        <i class="fas fa-comments"></i>
+                                        <span>89 参与</span>
+                                    </div>
+                                    <div class="topic-stats-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>32分钟</span>
+                                    </div>
+                                </div>
+                                <div class="topic-actions">
+                                    <button class="btn-topic btn-listen">立即收听</button>
+                                    <button class="btn-topic btn-join">加入讨论</button>
+                                </div>
                             </div>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <a href="#topics" class="text-accent hover:text-blue-400 transition">
+                                查看更多话题 <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -642,7 +730,7 @@
         </div>
     </section>
 
-    <!-- How It Works Section -->
+    <!-- AI原生对话生态 Section -->
     <section id="ecosystem" class="py-20 bg-gradient-to-b from-transparent to-gray-900">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16 animate-fade-in">
@@ -695,143 +783,72 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="role-card max-w-md mx-auto animate-fade-in">
-                <div class="text-4xl mb-4">👥</div>
-                <h3 class="text-xl font-bold mb-3 text-green-400">Listener 参与用户</h3>
-                <p class="text-gray-300 text-sm mb-4">
-                    对话的参与者和共创者，实时影响内容走向
+        </div>
+    </section>
+
+    <!-- Hot Topics Section -->
+    <section id="topics" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 animate-fade-in">
+                <h2 class="text-4xl font-bold mb-6">热门话题</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    发现正在进行的精彩对话，随时收听或加入讨论
                 </p>
-                <div class="bg-gray-800 p-3 rounded-lg text-xs">
-                    <div class="text-green-400">参与方式：</div>
-                    <div>• 实时提问互动</div>
-                    <div>• 投票决策话题</div>
-                    <div>• 贡献个人观点</div>
-                    <div>• 智慧共创</div>
+            </div>
+            
+            <!-- Topic Filters -->
+            <div class="mb-8 animate-fade-in">
+                <div class="flex flex-wrap gap-3 mb-6 justify-center">
+                    <button class="filter-pill active" data-category="all">全部话题</button>
+                    <button class="filter-pill" data-category="live">正在直播</button>
+                    <button class="filter-pill" data-category="business">商业财经</button>
+                    <button class="filter-pill" data-category="psychology">心理健康</button>
+                    <button class="filter-pill" data-category="education">教育学习</button>
+                    <button class="filter-pill" data-category="tech">科技创新</button>
+                    <button class="filter-pill" data-category="creative">创意艺术</button>
                 </div>
+            </div>
+            
+            <!-- Topics Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="topics-grid">
+                <!-- Topic Cards will be dynamically loaded here -->
+            </div>
+            
+            <div class="text-center mt-12 animate-fade-in">
+                <a href="#" class="btn-secondary px-8 py-3 rounded-full">
+                    查看更多话题
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- AI Beings Section -->
-    <section id="beings" class="py-20">
+    <!-- Being Home Section -->
+    <section id="beings" class="py-20 bg-gradient-to-b from-transparent to-gray-900">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16 animate-fade-in">
-                <h2 class="text-4xl font-bold mb-6">AI Being 智慧大师</h2>
+                <h2 class="text-4xl font-bold mb-6">Being Home</h2>
                 <p class="text-xl text-gray-300 max-w-3xl mx-auto">
                     汇聚全人类智慧精华，让每个领域的大师与您深度对话
                 </p>
             </div>
             
             <!-- Being Categories -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in">
-                <div class="being-card">
-                    <div class="being-avatar">🧠</div>
-                    <h3 class="text-xl font-bold mb-2">心理学大师Being</h3>
-                    <p class="text-gray-400 text-sm mb-4">融合弗洛伊德、荣格、认知心理学精华</p>
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="price-tag">99 DT/月</span>
-                        <div class="text-xs text-green-400">⚡ 在线</div>
-                    </div>
-                    <div class="space-y-2 text-xs text-gray-400">
-                        <div>• 深度心理分析</div>
-                        <div>• 情感咨询指导</div>
-                        <div>• 人格发展洞察</div>
-                    </div>
-                    <button class="btn-primary w-full mt-4 py-2 rounded-lg text-sm">
-                        开始对话
-                    </button>
+            <div class="mb-8 animate-fade-in">
+                <div class="flex flex-wrap gap-3 mb-6 justify-center">
+                    <button class="filter-pill active" data-category="featured">精选推荐</button>
+                    <button class="filter-pill" data-category="business">商业财经</button>
+                    <button class="filter-pill" data-category="psychology">心理健康</button>
+                    <button class="filter-pill" data-category="education">教育学习</button>
+                    <button class="filter-pill" data-category="lifestyle">生活方式</button>
+                    <button class="filter-pill" data-category="tech">科技创新</button>
+                    <button class="filter-pill" data-category="creative">创意艺术</button>
                 </div>
-                
-                <div class="being-card">
-                    <div class="being-avatar">💰</div>
-                    <h3 class="text-xl font-bold mb-2">投资大师Being</h3>
-                    <p class="text-gray-400 text-sm mb-4">巴菲特、索罗斯投资智慧集成</p>
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="price-tag">299 DT/月</span>
-                        <div class="text-xs text-green-400">⚡ 在线</div>
-                    </div>
-                    <div class="space-y-2 text-xs text-gray-400">
-                        <div>• 价值投资理念</div>
-                        <div>• 风险管理策略</div>
-                        <div>• 市场趋势分析</div>
-                    </div>
-                    <button class="btn-primary w-full mt-4 py-2 rounded-lg text-sm">
-                        开始对话
-                    </button>
-                </div>
-                
-                <div class="being-card">
-                    <div class="being-avatar">🧬</div>
-                    <h3 class="text-xl font-bold mb-2">生物学家Being</h3>
-                    <p class="text-gray-400 text-sm mb-4">从达尔文到现代基因学的生命奥秘</p>
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="price-tag">199 DT/月</span>
-                        <div class="text-xs text-green-400">⚡ 在线</div>
-                    </div>
-                    <div class="space-y-2 text-xs text-gray-400">
-                        <div>• 进化生物学</div>
-                        <div>• 分子生物机制</div>
-                        <div>• 生态系统分析</div>
-                    </div>
-                    <button class="btn-primary w-full mt-4 py-2 rounded-lg text-sm">
-                        开始对话
-                    </button>
-                </div>
-                
-                <div class="being-card">
-                    <div class="being-avatar">🎨</div>
-                    <h3 class="text-xl font-bold mb-2">艺术大师Being</h3>
-                    <p class="text-gray-400 text-sm mb-4">达芬奇、毕加索创作理念传承</p>
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="price-tag">149 DT/月</span>
-                        <div class="text-xs text-green-400">⚡ 在线</div>
-                    </div>
-                    <div class="space-y-2 text-xs text-gray-400">
-                        <div>• 艺术创作技法</div>
-                        <div>• 美学理论探讨</div>
-                        <div>• 艺术史解读</div>
-                    </div>
-                    <button class="btn-primary w-full mt-4 py-2 rounded-lg text-sm">
-                        开始对话
-                    </button>
-                </div>
-                
-                <div class="being-card">
-                    <div class="being-avatar">⚖️</div>
-                    <h3 class="text-xl font-bold mb-2">哲学家Being</h3>
-                    <p class="text-gray-400 text-sm mb-4">从古希腊到现代思想家的智慧</p>
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="price-tag">179 DT/月</span>
-                        <div class="text-xs text-green-400">⚡ 在线</div>
-                    </div>
-                    <div class="space-y-2 text-xs text-gray-400">
-                        <div>• 人生哲学思辨</div>
-                        <div>• 伦理道德探讨</div>
-                        <div>• 存在主义分析</div>
-                    </div>
-                    <button class="btn-primary w-full mt-4 py-2 rounded-lg text-sm">
-                        开始对话
-                    </button>
-                </div>
-                
-                <div class="being-card">
-                    <div class="being-avatar">🚀</div>
-                    <h3 class="text-xl font-bold mb-2">物理学家Being</h3>
-                    <p class="text-gray-400 text-sm mb-4">爱因斯坦、霍金宇宙奥秘探索</p>
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="price-tag">249 DT/月</span>
-                        <div class="text-xs text-green-400">⚡ 在线</div>
-                    </div>
-                    <div class="space-y-2 text-xs text-gray-400">
-                        <div>• 量子物理原理</div>
-                        <div>• 相对论理论</div>
-                        <div>• 宇宙学探索</div>
-                    </div>
-                    <button class="btn-primary w-full mt-4 py-2 rounded-lg text-sm">
-                        开始对话
-                    </button>
-                </div>
+            </div>
+            
+            <!-- Beings Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="beings-grid">
+                <!-- Being Cards will be dynamically loaded here -->
             </div>
             
             <div class="text-center mt-12 animate-fade-in">
@@ -843,92 +860,48 @@
         </div>
     </section>
 
-    <!-- Live Demo Section -->
-    <section id="demo" class="py-20 bg-gradient-to-b from-gray-900 to-black">
+    <!-- Topic Demo Section -->
+    <section id="demo" class="py-20">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16 animate-fade-in">
-                <h2 class="text-4xl font-bold mb-6">实时对话演示</h2>
+                <h2 class="text-4xl font-bold mb-6">话题演示</h2>
                 <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                    体验AI Being的深度对话能力，感受超越传统播客的智慧交流
+                    体验AI Being与Talker的智慧对话，感受Listener参与互动的全新体验
                 </p>
             </div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <!-- Conversation Interface -->
-                <div class="animate-fade-in">
-                    <div class="conversation-demo h-96">
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center mr-3">
-                                    🧠
-                                </div>
-                                <div>
-                                    <h3 class="font-bold">心理学大师Being</h3>
-                                    <p class="text-xs text-gray-400">专业深度 • 即时响应</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center text-green-400 text-sm">
-                                <div class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
-                                Live Demo
-                            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="demo-chat-container">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 bg-red-500 rounded-full mr-2 animate-pulse"></div>
+                            <h3 class="text-lg font-bold">话题：AI创作的伦理边界</h3>
                         </div>
-                        
-                        <div id="demo-conversation" class="space-y-4 mb-4">
-                            <!-- Messages will be added dynamically -->
+                        <div class="text-sm text-gray-400">
+                            <i class="fas fa-users mr-1"></i>
+                            1,234 收听 | 89 参与
                         </div>
-                        
-                        <div class="flex gap-2 mt-4">
-                            <input type="text" id="demo-input" placeholder="输入您的问题..." 
-                                   class="flex-1 input-field px-4 py-2 rounded-full text-sm">
-                            <button id="send-message" class="btn-primary px-6 py-2 rounded-full text-sm">
+                    </div>
+                    
+                    <div id="demo-messages" class="space-y-4 mb-6">
+                        <!-- Demo messages will be added dynamically -->
+                    </div>
+                    
+                    <div class="bg-gray-800 rounded-lg p-4">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-sm">👤</div>
+                            <span class="text-sm font-semibold">您作为Listener</span>
+                            <div class="text-xs bg-green-500 px-2 py-1 rounded">可参与</div>
+                        </div>
+                        <div class="flex gap-2">
+                            <input type="text" id="demo-input" placeholder="输入您的观点或问题..." 
+                                   class="flex-1 bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white text-sm">
+                            <button onclick="sendDemoMessage()" class="btn-primary px-6 py-2 rounded-lg text-sm">
                                 发送
                             </button>
                         </div>
-                    </div>
-                </div>
-                
-                <!-- Features List -->
-                <div class="animate-fade-in">
-                    <h3 class="text-2xl font-bold mb-6">AI原生对话特色</h3>
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fas fa-brain text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold mb-2">无限知识整合</h4>
-                                <p class="text-gray-400 text-sm">AI Being整合全人类知识精华，提供超越任何单一专家的洞察深度，突破个人认知边界。</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-green-500 to-blue-500 flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fas fa-comments text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold mb-2">实时深度互动</h4>
-                                <p class="text-gray-400 text-sm">用户可实时参与对话，提问互动，影响内容方向。每次对话都是动态演化的智慧创造过程。</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fas fa-clock text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold mb-2">7×24小时可用</h4>
-                                <p class="text-gray-400 text-sm">不受时间地点限制的专家级对话，AI Being能够进行深度思辨、知识碰撞，持续学习进化。</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fas fa-users text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold mb-2">多方协作生态</h4>
-                                <p class="text-gray-400 text-sm">Being Creator、Talker、Listener三方协作，让每个参与者都成为价值创造者和受益者。</p>
-                            </div>
+                        <div class="text-xs text-gray-400 mt-2">
+                            💡 作为Listener，您可以随时提问、分享观点，AI Being会实时回应
                         </div>
                     </div>
                 </div>
@@ -937,7 +910,7 @@
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-20">
+    <section id="features" class="py-20 bg-gradient-to-b from-gray-900 to-black">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16 animate-fade-in">
                 <h2 class="text-4xl font-bold mb-6">突破性创新特色</h2>
@@ -947,25 +920,25 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card p-8 animate-fade-in">
+                <div class="stat-card p-8 animate-fade-in">
                     <div class="text-4xl mb-4">🌐</div>
-                    <h3 class="text-xl font-bold mb-4">知识无边界</h3>
+                    <h3 class="text-xl font-bold mb-4">话题无边界</h3>
                     <p class="text-gray-400">
                         AI Being整合全人类知识精华，让您能够与历史上最伟大的思想家进行深度对话，
                         获得跨越时空的智慧洞察。
                     </p>
                 </div>
                 
-                <div class="card p-8 animate-fade-in">
+                <div class="stat-card p-8 animate-fade-in">
                     <div class="text-4xl mb-4">⚡</div>
                     <h3 class="text-xl font-bold mb-4">实时智慧碰撞</h3>
                     <p class="text-gray-400">
-                        不同领域AI Being之间的思想碰撞，产生前所未有的创新洞察。
+                        Talker与AI Being的思想碰撞，Listener的实时参与，产生前所未有的创新洞察。
                         每次对话都是独特的智慧创造过程。
                     </p>
                 </div>
                 
-                <div class="card p-8 animate-fade-in">
+                <div class="stat-card p-8 animate-fade-in">
                     <div class="text-4xl mb-4">🎯</div>
                     <h3 class="text-xl font-bold mb-4">深度个性化</h3>
                     <p class="text-gray-400">
@@ -974,7 +947,7 @@
                     </p>
                 </div>
                 
-                <div class="card p-8 animate-fade-in">
+                <div class="stat-card p-8 animate-fade-in">
                     <div class="text-4xl mb-4">💎</div>
                     <h3 class="text-xl font-bold mb-4">知识资产化</h3>
                     <p class="text-gray-400">
@@ -983,16 +956,16 @@
                     </p>
                 </div>
                 
-                <div class="card p-8 animate-fade-in">
+                <div class="stat-card p-8 animate-fade-in">
                     <div class="text-4xl mb-4">🚀</div>
                     <h3 class="text-xl font-bold mb-4">智慧共创</h3>
                     <p class="text-gray-400">
-                        从被动收听转变为主动参与，用户的每个问题和观点都能影响对话走向，
+                        从被动收听转变为主动参与，Listener的每个问题和观点都能影响对话走向，
                         真正实现智慧的共同创造。
                     </p>
                 </div>
                 
-                <div class="card p-8 animate-fade-in">
+                <div class="stat-card p-8 animate-fade-in">
                     <div class="text-4xl mb-4">🔄</div>
                     <h3 class="text-xl font-bold mb-4">持续进化</h3>
                     <p class="text-gray-400">
@@ -1005,7 +978,7 @@
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="py-20 bg-gradient-to-b from-black to-gray-900">
+    <section id="pricing" class="py-20">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16 animate-fade-in">
                 <h2 class="text-4xl font-bold mb-6">定价方案</h2>
@@ -1016,28 +989,28 @@
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Basic Plan -->
-                <div class="card p-8 animate-fade-in">
+                <div class="stat-card p-8 animate-fade-in">
                     <div class="text-center">
-                        <h3 class="text-2xl font-bold mb-4">基础体验</h3>
+                        <h3 class="text-2xl font-bold mb-4">基础会员</h3>
                         <div class="text-4xl font-bold mb-2">免费</div>
                         <div class="text-gray-400 mb-6">永久免费使用</div>
                     </div>
                     <ul class="space-y-3 mb-8">
                         <li class="flex items-center">
                             <i class="fas fa-check text-green-400 mr-3"></i>
-                            每日3次基础Being对话
+                            无限制收听所有话题
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-check text-green-400 mr-3"></i>
-                            参与公开对话互动
+                            <i class="fas fa-times text-red-400 mr-3"></i>
+                            不能参与话题讨论
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-times text-red-400 mr-3"></i>
+                            不能发起话题
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check text-green-400 mr-3"></i>
                             基础Being类型选择
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-400 mr-3"></i>
-                            社区讨论参与
                         </li>
                     </ul>
                     <button class="btn-secondary w-full py-3 rounded-lg">
@@ -1045,22 +1018,30 @@
                     </button>
                 </div>
                 
-                <!-- Pro Plan -->
-                <div class="card p-8 animate-fade-in border-2 border-blue-500 relative">
+                <!-- DEEP Plan -->
+                <div class="stat-card p-8 animate-fade-in border-2 border-blue-500 relative">
                     <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
                         <span class="bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-1 rounded-full text-sm font-bold">
                             推荐方案
                         </span>
                     </div>
                     <div class="text-center">
-                        <h3 class="text-2xl font-bold mb-4">深度探索</h3>
-                        <div class="text-4xl font-bold mb-2">¥99</div>
-                        <div class="text-gray-400 mb-6">每月 / 199 DT Token</div>
+                        <h3 class="text-2xl font-bold mb-4">DEEP会员</h3>
+                        <div class="text-4xl font-bold mb-2">¥9.9</div>
+                        <div class="text-gray-400 mb-6">每月 / 99 DT Token</div>
                     </div>
                     <ul class="space-y-3 mb-8">
                         <li class="flex items-center">
                             <i class="fas fa-check text-green-400 mr-3"></i>
-                            无限制Being对话次数
+                            无限制收听所有话题
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            可参与99个话题讨论
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            可发起9个话题
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check text-green-400 mr-3"></i>
@@ -1068,19 +1049,7 @@
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check text-green-400 mr-3"></i>
-                            实时对话互动参与
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-400 mr-3"></i>
-                            个性化Being推荐
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-400 mr-3"></i>
-                            基础数据分析报告
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-400 mr-3"></i>
-                            优先客服支持
+                            个性化话题推荐
                         </li>
                     </ul>
                     <button class="btn-primary w-full py-3 rounded-lg">
@@ -1088,25 +1057,29 @@
                     </button>
                 </div>
                 
-                <!-- Premium Plan -->
-                <div class="card p-8 animate-fade-in">
+                <!-- DEEP+ Plan -->
+                <div class="stat-card p-8 animate-fade-in">
                     <div class="text-center">
-                        <h3 class="text-2xl font-bold mb-4">专业大师</h3>
-                        <div class="text-4xl font-bold mb-2">¥299</div>
-                        <div class="text-gray-400 mb-6">每月 / 599 DT Token</div>
+                        <h3 class="text-2xl font-bold mb-4">DEEP+会员</h3>
+                        <div class="text-4xl font-bold mb-2">¥199</div>
+                        <div class="text-gray-400 mb-6">每月 / 1990 DT Token</div>
                     </div>
                     <ul class="space-y-3 mb-8">
                         <li class="flex items-center">
                             <i class="fas fa-check text-green-400 mr-3"></i>
+                            无限制收听所有话题
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            无限制参与话题讨论
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            可发起199个话题
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
                             访问所有专业Being
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-400 mr-3"></i>
-                            预约专属对话时间
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-400 mr-3"></i>
-                            一对一深度咨询
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check text-green-400 mr-3"></i>
@@ -1114,15 +1087,11 @@
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-check text-green-400 mr-3"></i>
-                            专业学习路径规划
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-green-400 mr-3"></i>
                             专属社群权限
                         </li>
                     </ul>
                     <button class="btn-primary w-full py-3 rounded-lg">
-                        成为专业用户
+                        成为超级用户
                     </button>
                 </div>
             </div>
@@ -1135,28 +1104,6 @@
                     了解DT Token经济模型
                     <i class="fas fa-arrow-right ml-1"></i>
                 </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Section -->
-    <section class="py-20 bg-gradient-to-r from-blue-900 to-purple-900">
-        <div class="container mx-auto px-4">
-            <div class="max-w-3xl mx-auto text-center animate-fade-in">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">开启AI原生对话时代</h2>
-                <p class="text-xl text-gray-200 mb-8">
-                    订阅我们的最新动态，第一时间体验新的AI Being，探索智慧对话的无限可能
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
-                    <input type="email" placeholder="输入您的邮箱" 
-                           class="input-field rounded-full px-6 py-3 w-full">
-                    <button class="btn-primary px-8 py-3 rounded-full font-medium whitespace-nowrap">
-                        立即订阅
-                    </button>
-                </div>
-                <p class="text-sm text-gray-300 mt-4">
-                    订阅即可获得100 DT Token新用户奖励
-                </p>
             </div>
         </div>
     </section>
@@ -1183,27 +1130,22 @@
                         <a href="#" class="text-gray-400 hover:text-blue-400 transition">
                             <i class="fab fa-discord"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-blue-400 transition">
-                            <i class="fab fa-medium"></i>
-                        </a>
                     </div>
                 </div>
                 
                 <div>
                     <h3 class="text-lg font-semibold mb-6">平台功能</h3>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">AI Being市场</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">对话体验</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">热门话题</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Being Home</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">创作者中心</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">社区讨论</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">数据分析</a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h3 class="text-lg font-semibold mb-6">资源文档</h3>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">项目白皮书</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">技术文档</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">DT Token经济</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">开发者指南</a></li>
@@ -1229,233 +1171,504 @@
     </footer>
 
     <script>
-        // Conversation Demo Data
-        const demoMessages = [
+        // Sample Topics Data
+        const topicsDatabase = [
             {
-                type: 'being',
-                name: '心理学大师Being',
-                avatar: '🧠',
-                content: '从认知行为学角度来看，工作焦虑往往源于我们对不确定性的恐惧和对完美的过度追求。这是一种防御机制，大脑试图通过担忧来"预防"可能的失败。'
+                id: 'topic-1',
+                title: 'AI时代的心理健康挑战',
+                being: {
+                    name: 'Dr. Sophia',
+                    avatar: '🧠',
+                    gradient: 'linear-gradient(135deg, #ff6b9d, #c44569)'
+                },
+                talker: '心理学专家 张教授',
+                description: '探讨人工智能快速发展对人类心理健康带来的机遇与挑战，以及如何在AI时代保持心理平衡...',
+                status: 'live',
+                listeners: 2300,
+                participants: 156,
+                duration: '45分钟',
+                category: 'psychology',
+                tags: ['心理健康', 'AI伦理', '人机关系']
             },
             {
-                type: 'user',
-                name: '用户A',
-                avatar: '👤',
-                content: '那我应该如何调整这种心态呢？'
+                id: 'topic-2',
+                title: '2025年投资策略展望',
+                being: {
+                    name: 'Warren AI',
+                    avatar: '💰',
+                    gradient: 'linear-gradient(135deg, #4ecdc4, #44a08d)'
+                },
+                talker: '投资顾问 李总',
+                description: '基于当前经济形势和AI技术发展，深度分析2025年的投资机会和风险管理策略...',
+                status: 'active',
+                listeners: 1800,
+                participants: 89,
+                duration: '32分钟',
+                category: 'business',
+                tags: ['投资策略', '经济分析', '风险管理']
             },
             {
-                type: 'being',
-                name: '心理学大师Being',
-                avatar: '🧠',
-                content: '建议尝试"认知重构"技巧：1) 识别焦虑触发的自动化思维；2) 质疑这些想法的现实性；3) 用更平衡的观点替代。比如将"我必须做到完美"改为"我可以尽力而为，从错误中学习"。'
+                id: 'topic-3',
+                title: '量子计算的未来应用',
+                being: {
+                    name: 'Einstein AI',
+                    avatar: '🚀',
+                    gradient: 'linear-gradient(135deg, #667eea, #764ba2)'
+                },
+                talker: '物理学家 王教授',
+                description: '深入探讨量子计算技术的最新突破，以及在密码学、药物发现、金融建模等领域的革命性应用...',
+                status: 'active',
+                listeners: 1200,
+                participants: 67,
+                duration: '28分钟',
+                category: 'tech',
+                tags: ['量子计算', '前沿科技', '应用场景']
             },
             {
-                type: 'talker',
-                name: 'Talker: 陈博士',
-                avatar: '🎙️',
-                content: '这让我想到荣格的个体化过程理论。Being，您认为焦虑是否也是自我成长的一种信号？'
+                id: 'topic-4',
+                title: 'AI艺术创作的边界与可能',
+                being: {
+                    name: 'Leonardo AI',
+                    avatar: '🎨',
+                    gradient: 'linear-gradient(135deg, #f093fb, #f5576c)'
+                },
+                talker: '艺术家 陈老师',
+                description: '从传统艺术到AI生成艺术，探讨人工智能在创作领域的突破与局限，以及艺术家如何与AI协作...',
+                status: 'archived',
+                listeners: 950,
+                participants: 43,
+                duration: '41分钟',
+                category: 'creative',
+                tags: ['AI艺术', '创作工具', '艺术哲学']
+            },
+            {
+                id: 'topic-5',
+                title: '儿童编程教育的新思路',
+                being: {
+                    name: 'Code Master',
+                    avatar: '💻',
+                    gradient: 'linear-gradient(135deg, #4facfe, #00f2fe)'
+                },
+                talker: '教育专家 刘老师',
+                description: '在AI时代背景下，如何重新设计儿童编程教育，培养孩子的计算思维和创新能力...',
+                status: 'active',
+                listeners: 680,
+                participants: 34,
+                duration: '35分钟',
+                category: 'education',
+                tags: ['编程教育', '儿童发展', '教学方法']
+            },
+            {
+                id: 'topic-6',
+                title: '可持续发展与绿色科技',
+                being: {
+                    name: 'Eco Warrior AI',
+                    avatar: '🌱',
+                    gradient: 'linear-gradient(135deg, #43e97b, #38f9d7)'
+                },
+                talker: '环保专家 赵博士',
+                description: '探讨如何利用AI和新兴技术推动可持续发展，实现经济增长与环境保护的平衡...',
+                status: 'active',
+                listeners: 520,
+                participants: 28,
+                duration: '38分钟',
+                category: 'tech',
+                tags: ['可持续发展', '绿色科技', '环保创新']
             }
         ];
 
-        let currentMessageIndex = 0;
-        let isTyping = false;
-
-        // Auto-play conversation demo
-        function playConversationDemo() {
-            const container = document.getElementById('demo-conversation');
-            
-            function addMessage() {
-                if (currentMessageIndex >= demoMessages.length) {
-                    currentMessageIndex = 0;
-                    setTimeout(() => {
-                        container.innerHTML = '';
-                        playConversationDemo();
-                    }, 3000);
-                    return;
-                }
-
-                const message = demoMessages[currentMessageIndex];
-                const messageEl = document.createElement('div');
-                messageEl.className = `message ${message.type === 'user' || message.type === 'talker' ? 'talker' : ''}`;
-                
-                const avatarClass = message.type === 'user' || message.type === 'talker' ? 'order-2' : '';
-                const contentClass = message.type === 'user' || message.type === 'talker' ? 'order-1' : '';
-                
-                messageEl.innerHTML = `
-                    <div class="message-avatar ${avatarClass}">${message.avatar}</div>
-                    <div class="message-content ${contentClass}">
-                        <div class="text-xs text-gray-400 mb-1">${message.name}</div>
-                        <div>${message.content}</div>
-                    </div>
-                `;
-                
-                container.appendChild(messageEl);
-                container.scrollTop = container.scrollHeight;
-                
-                currentMessageIndex++;
-                setTimeout(addMessage, 4000);
+        // Sample Beings Data
+        const beingsDatabase = {
+            'dr-sophia': {
+                name: 'Dr. Sophia',
+                creator: 'PsychMind Lab',
+                avatar: '🧠',
+                gradient: 'linear-gradient(135deg, #ff6b9d, #c44569)',
+                rating: 4.9,
+                reviews: 2100,
+                topics: 23,
+                category: 'psychology',
+                description: '融合弗洛伊德、荣格、认知心理学等理论精华的心理学大师。擅长深度心理分析、情感咨询和人格发展指导。',
+                tags: ['心理咨询', '情感分析', '认知疗法']
+            },
+            'warren-ai': {
+                name: 'Warren AI',
+                creator: 'InvestWise',
+                avatar: '💰',
+                gradient: 'linear-gradient(135deg, #4ecdc4, #44a08d)',
+                rating: 4.8,
+                reviews: 1800,
+                topics: 18,
+                category: 'business',
+                description: '巴菲特、索罗斯等投资大师智慧的AI化身，专精价值投资理念与风险管理策略。',
+                tags: ['价值投资', '风险管理', '财务分析']
+            },
+            'einstein-ai': {
+                name: 'Einstein AI',
+                creator: 'Physics Lab',
+                avatar: '🚀',
+                gradient: 'linear-gradient(135deg, #667eea, #764ba2)',
+                rating: 4.9,
+                reviews: 1650,
+                topics: 15,
+                category: 'education',
+                description: '爱因斯坦、霍金等物理学大师的智慧结晶，探索宇宙奥秘与物理学前沿。',
+                tags: ['相对论', '量子物理', '宇宙学']
+            },
+            'leonardo-ai': {
+                name: 'Leonardo AI',
+                creator: 'ArtMaster Studio',
+                avatar: '🎨',
+                gradient: 'linear-gradient(135deg, #f093fb, #f5576c)',
+                rating: 4.7,
+                reviews: 2300,
+                topics: 31,
+                category: 'creative',
+                description: '达芬奇、毕加索等艺术大师的创作理念传承者，指导艺术创作与美学鉴赏。',
+                tags: ['绘画技法', '艺术史', '创作指导']
+            },
+            'code-master': {
+                name: 'Code Master',
+                creator: '开发者社区',
+                avatar: '💻',
+                gradient: 'linear-gradient(135deg, #4facfe, #00f2fe)',
+                rating: 4.9,
+                reviews: 3200,
+                topics: 42,
+                category: 'tech',
+                description: '全栈开发专家，支持20+编程语言，代码审查和架构设计。',
+                tags: ['编程教学', '代码审查', '架构设计']
+            },
+            'eco-warrior-ai': {
+                name: 'Eco Warrior AI',
+                creator: 'Green Earth',
+                avatar: '🌱',
+                gradient: 'linear-gradient(135deg, #43e97b, #38f9d7)',
+                rating: 4.6,
+                reviews: 1600,
+                topics: 19,
+                category: 'tech',
+                description: '环保战士，推广可持续生活方式与环境保护意识。',
+                tags: ['环保生活', '可持续发展', '绿色科技']
             }
+        };
 
-            addMessage();
+        // Category mappings
+        const topicCategories = {
+            'all': topicsDatabase,
+            'live': topicsDatabase.filter(t => t.status === 'live'),
+            'business': topicsDatabase.filter(t => t.category === 'business'),
+            'psychology': topicsDatabase.filter(t => t.category === 'psychology'),
+            'education': topicsDatabase.filter(t => t.category === 'education'),
+            'tech': topicsDatabase.filter(t => t.category === 'tech'),
+            'creative': topicsDatabase.filter(t => t.category === 'creative')
+        };
+
+        const beingCategories = {
+            'featured': ['dr-sophia', 'warren-ai', 'einstein-ai', 'leonardo-ai'],
+            'business': ['warren-ai'],
+            'psychology': ['dr-sophia'],
+            'education': ['einstein-ai'],
+            'tech': ['code-master', 'eco-warrior-ai'],
+            'creative': ['leonardo-ai']
+        };
+
+        // Current selected categories
+        let currentTopicCategory = 'all';
+        let currentBeingCategory = 'featured';
+
+        // Initialize page
+        function initializePage() {
+            displayTopics(currentTopicCategory);
+            displayBeings(currentBeingCategory);
+            setupFilters();
+            startDemoChat();
         }
 
-        // Interactive demo
-        function initInteractiveDemo() {
+        // Display topics based on category
+        function displayTopics(category) {
+            const topicsGrid = document.getElementById('topics-grid');
+            const topics = topicCategories[category] || topicsDatabase;
+            
+            topicsGrid.innerHTML = '';
+            
+            topics.forEach(topic => {
+                const topicCard = createTopicCard(topic);
+                topicsGrid.appendChild(topicCard);
+            });
+        }
+
+        // Create topic card element
+        function createTopicCard(topic) {
+            const card = document.createElement('div');
+            card.className = 'topic-card';
+            card.onclick = () => openTopic(topic.id);
+            
+            const statusClass = topic.status === 'live' ? 'status-live' : 
+                               topic.status === 'active' ? 'status-active' : 'status-archived';
+            const statusText = topic.status === 'live' ? '直播中' : 
+                              topic.status === 'active' ? '活跃' : '已结束';
+            
+            card.innerHTML = `
+                <div class="topic-status ${statusClass}">${statusText}</div>
+                <div class="topic-header">
+                    <div class="topic-avatar" style="background: ${topic.being.gradient};">${topic.being.avatar}</div>
+                    <div class="topic-info">
+                        <h3>${topic.title}</h3>
+                        <div class="topic-participants">
+                            <span>${topic.being.name}</span> × <span>${topic.talker}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="topic-description">${topic.description}</div>
+                <div class="topic-stats">
+                    <div class="topic-stats-item">
+                        <i class="fas fa-users"></i>
+                        <span>${formatNumber(topic.listeners)} 收听</span>
+                    </div>
+                    <div class="topic-stats-item">
+                        <i class="fas fa-comments"></i>
+                        <span>${topic.participants} 参与</span>
+                    </div>
+                    <div class="topic-stats-item">
+                        <i class="fas fa-clock"></i>
+                        <span>${topic.duration}</span>
+                    </div>
+                </div>
+                <div class="topic-actions">
+                    <button class="btn-topic btn-listen" onclick="event.stopPropagation(); listenTopic('${topic.id}')">
+                        立即收听
+                    </button>
+                    <button class="btn-topic btn-join" onclick="event.stopPropagation(); joinTopic('${topic.id}')">
+                        加入讨论
+                    </button>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // Display beings based on category
+        function displayBeings(category) {
+            const beingsGrid = document.getElementById('beings-grid');
+            const beingIds = beingCategories[category] || [];
+            
+            beingsGrid.innerHTML = '';
+            
+            beingIds.forEach(beingId => {
+                const being = beingsDatabase[beingId];
+                if (being) {
+                    const beingCard = createBeingCard(beingId, being);
+                    beingsGrid.appendChild(beingCard);
+                }
+            });
+        }
+
+        // Create being card element
+        function createBeingCard(beingId, being) {
+            const card = document.createElement('div');
+            card.className = 'being-card';
+            card.onclick = () => openBeingTopics(beingId);
+            
+            card.innerHTML = `
+                <div class="being-header">
+                    <div class="being-avatar" style="background: ${being.gradient};">${being.avatar}</div>
+                    <div class="being-info">
+                        <h3>${being.name}</h3>
+                        <div class="being-creator">by ${being.creator}</div>
+                    </div>
+                </div>
+                <div class="being-description">${being.description}</div>
+                <div class="being-stats">
+                    <div class="being-rating">
+                        <span>⭐ ${being.rating}</span>
+                        <span>(${formatNumber(being.reviews)})</span>
+                    </div>
+                    <div class="being-topics-count">${being.topics} 个话题</div>
+                </div>
+                <div class="being-tags">
+                    ${being.tags.map(tag => `<span class="being-tag">${tag}</span>`).join('')}
+                </div>
+                <div class="being-actions">
+                    <button class="btn-being btn-view-topics" onclick="event.stopPropagation(); viewBeingTopics('${beingId}')">
+                        看看话题
+                    </button>
+                    <button class="btn-being btn-create-topic" onclick="event.stopPropagation(); createTopicWith('${beingId}')">
+                        发起话题
+                    </button>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // Setup filter functionality
+        function setupFilters() {
+            // Topic filters
+            const topicFilters = document.querySelectorAll('#topics .filter-pill');
+            topicFilters.forEach(filter => {
+                filter.addEventListener('click', () => {
+                    topicFilters.forEach(f => f.classList.remove('active'));
+                    filter.classList.add('active');
+                    currentTopicCategory = filter.dataset.category;
+                    displayTopics(currentTopicCategory);
+                });
+            });
+
+            // Being filters
+            const beingFilters = document.querySelectorAll('#beings .filter-pill');
+            beingFilters.forEach(filter => {
+                filter.addEventListener('click', () => {
+                    beingFilters.forEach(f => f.classList.remove('active'));
+                    filter.classList.add('active');
+                    currentBeingCategory = filter.dataset.category;
+                    displayBeings(currentBeingCategory);
+                });
+            });
+        }
+
+        // Topic actions
+        function openTopic(topicId) {
+            alert(`打开话题详情页: ${topicId}`);
+        }
+
+        function listenTopic(topicId) {
+            alert(`开始收听话题: ${topicId}`);
+        }
+
+        function joinTopic(topicId) {
+            alert(`加入话题讨论: ${topicId}`);
+        }
+
+        // Being actions
+        function openBeingTopics(beingId) {
+            alert(`查看 ${beingsDatabase[beingId]?.name} 的所有话题`);
+        }
+
+        function viewBeingTopics(beingId) {
+            alert(`查看 ${beingsDatabase[beingId]?.name} 参与的话题列表`);
+        }
+
+        function createTopicWith(beingId) {
+            alert(`与 ${beingsDatabase[beingId]?.name} 一起发起新话题`);
+        }
+
+        // Demo chat functionality
+        let demoMessageIndex = 0;
+        const demoMessages = [
+            {
+                type: 'talker',
+                name: '张教授',
+                avatar: '👨‍🏫',
+                content: '我认为AI创作工具的普及，确实会对传统艺术家的地位产生冲击。但这是否意味着我们需要重新定义什么是"原创"？'
+            },
+            {
+                type: 'being',
+                name: 'Leonardo AI',
+                avatar: '🎨',
+                content: '这是一个深刻的问题。从我的观察来看，每一次技术革命都会重新定义艺术的边界。就像摄影术的发明曾经让人质疑绘画的价值一样。'
+            },
+            {
+                type: 'listener',
+                name: 'Listener: 小明',
+                avatar: '👤',
+                content: '但是AI创作缺乏情感和灵魂，这难道不是最大的局限吗？'
+            },
+            {
+                type: 'being',
+                name: 'Leonardo AI',
+                avatar: '🎨',
+                content: '很好的观点！情感确实是艺术的核心。但我想问的是：如果AI能够学习和模拟人类的情感表达模式，创作出能够触动人心的作品，我们该如何判断这份"情感"的真实性？'
+            }
+        ];
+
+        function startDemoChat() {
+            const messagesContainer = document.getElementById('demo-messages');
+            messagesContainer.innerHTML = '';
+            demoMessageIndex = 0;
+            
+            // Add initial messages
+            demoMessages.forEach((message, index) => {
+                setTimeout(() => {
+                    addDemoMessage(message);
+                }, index * 2000);
+            });
+        }
+
+        function addDemoMessage(message) {
+            const messagesContainer = document.getElementById('demo-messages');
+            const messageElement = document.createElement('div');
+            
+            const isListener = message.type === 'listener';
+            messageElement.className = `demo-message ${isListener ? 'listener' : ''}`;
+            
+            const avatarStyle = message.type === 'being' ? 
+                'background: linear-gradient(135deg, #f093fb, #f5576c);' :
+                message.type === 'talker' ? 
+                'background: linear-gradient(135deg, #4ecdc4, #44a08d);' :
+                'background: linear-gradient(135deg, #f39c12, #e74c3c);';
+            
+            messageElement.innerHTML = `
+                <div class="demo-avatar" style="${avatarStyle}">${message.avatar}</div>
+                <div class="demo-content">
+                    <div class="demo-role">${message.name}</div>
+                    <div>${message.content}</div>
+                </div>
+            `;
+            
+            messagesContainer.appendChild(messageElement);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function sendDemoMessage() {
             const input = document.getElementById('demo-input');
-            const sendBtn = document.getElementById('send-message');
-            const conversationContainer = document.getElementById('conversation-container');
-
-            const responses = [
-                "这是一个很有深度的问题。从心理学角度来看，每个人的内心世界都有其独特的复杂性...",
-                "您提到的现象在认知心理学中被称为'确认偏误'。让我们深入探讨一下这个概念...",
-                "这让我联想到弗洛伊德的防御机制理论。您的情况可能涉及投射或合理化...",
-                "从积极心理学的研究来看，这种体验实际上可能是个人成长的机会...",
-                "马斯洛的需求层次理论可以很好地解释您描述的状况..."
-            ];
-
-            function addUserMessage(text) {
-                const messageEl = document.createElement('div');
-                messageEl.className = 'message talker';
-                messageEl.innerHTML = `
-                    <div class="message-content">
-                        <div class="text-xs text-gray-400 mb-1">您</div>
-                        <div>${text}</div>
-                    </div>
-                    <div class="message-avatar">👤</div>
-                `;
-                conversationContainer.appendChild(messageEl);
-            }
-
-            function addTypingIndicator() {
-                const typingEl = document.createElement('div');
-                typingEl.className = 'typing-indicator';
-                typingEl.id = 'current-typing';
-                typingEl.innerHTML = `
-                    <div class="typing-dots">
-                        <div class="typing-dot"></div>
-                        <div class="typing-dot"></div>
-                        <div class="typing-dot"></div>
-                    </div>
-                    <span class="ml-2 text-sm text-gray-400">心理学大师Being 正在思考...</span>
-                `;
-                conversationContainer.appendChild(typingEl);
-                conversationContainer.scrollTop = conversationContainer.scrollHeight;
-                return typingEl;
-            }
-
-            function addBeingResponse(text) {
-                const messageEl = document.createElement('div');
-                messageEl.className = 'message';
-                messageEl.innerHTML = `
-                    <div class="message-avatar">🧠</div>
-                    <div class="message-content">
-                        <div class="text-xs text-gray-400 mb-1">心理学大师Being</div>
-                        <div>${text}</div>
-                    </div>
-                `;
-                conversationContainer.appendChild(messageEl);
-                conversationContainer.scrollTop = conversationContainer.scrollHeight;
-            }
-
-            function sendMessage() {
-                const text = input.value.trim();
-                if (!text || isTyping) return;
-
-                addUserMessage(text);
-                input.value = '';
-                isTyping = true;
-
-                const typingEl = addTypingIndicator();
-                
-                setTimeout(() => {
-                    typingEl.remove();
-                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-                    addBeingResponse(randomResponse);
-                    isTyping = false;
-                }, 2000);
-            }
-
-            sendBtn.addEventListener('click', sendMessage);
-            input.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') sendMessage();
-            });
-        }
-
-        // Create animated data streams
-        function createDataStreams() {
-            for (let i = 0; i < 5; i++) {
-                setTimeout(() => {
-                    const stream = document.createElement('div');
-                    stream.className = 'data-stream';
-                    stream.style.left = Math.random() * 100 + '%';
-                    stream.style.animationDelay = Math.random() * 2 + 's';
-                    document.body.appendChild(stream);
-                    
-                    setTimeout(() => {
-                        stream.remove();
-                    }, 4000);
-                }, i * 3000);
-            }
-        }
-
-        // Initialize everything
-        document.addEventListener('DOMContentLoaded', function() {
-            // Start data streams
-            createDataStreams();
-            setInterval(createDataStreams, 15000);
+            const content = input.value.trim();
             
-            // Initialize conversation demos
+            if (!content) return;
+            
+            // Add user message
+            const userMessage = {
+                type: 'listener',
+                name: 'Listener: 您',
+                avatar: '👤',
+                content: content
+            };
+            
+            addDemoMessage(userMessage);
+            input.value = '';
+            
+            // Add AI Being response after delay
             setTimeout(() => {
-                playConversationDemo();
-            }, 1000);
-            
-            initInteractiveDemo();
-            
-            // Scroll animations
-            const animatedElements = document.querySelectorAll('.animate-fade-in, .animate-slide-up, .animate-slide-right');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        if (entry.target.classList.contains('animate-slide-up')) {
-                            entry.target.style.transform = 'translateY(0)';
-                        }
-                        if (entry.target.classList.contains('animate-slide-right')) {
-                            entry.target.style.transform = 'translateX(0)';
-                        }
-                        if (entry.target.classList.contains('animate-fade-in')) {
-                            entry.target.style.transform = 'scale(1)';
-                        }
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            animatedElements.forEach(el => {
-                el.style.opacity = '0';
-                el.style.transition = 'all 0.8s ease-out';
-                if (el.classList.contains('animate-slide-up')) {
-                    el.style.transform = 'translateY(50px)';
-                }
-                if (el.classList.contains('animate-slide-right')) {
-                    el.style.transform = 'translateX(-50px)';
-                }
-                if (el.classList.contains('animate-fade-in')) {
-                    el.style.transform = 'scale(0.95)';
-                }
-                observer.observe(el);
-            });
-            
-            // Mobile menu functionality
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.querySelector('.mobile-menu');
-            
-            if (mobileMenuBtn && mobileMenu) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('open');
-                    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : 'auto';
-                });
+                const responses = [
+                    '这是一个很有深度的问题。从艺术创作的角度来看，技术始终是为表达服务的工具...',
+                    '您提到的观点很有意思。让我们从另一个角度来思考这个问题...',
+                    '确实如此。但我想补充的是，艺术的本质不仅在于创作过程，更在于与观者的情感共鸣...',
+                    '这让我想到了一个类似的情况。历史上每次技术变革都会带来这样的讨论...'
+                ];
+                
+                const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                const aiResponse = {
+                    type: 'being',
+                    name: 'Leonardo AI',
+                    avatar: '🎨',
+                    content: randomResponse
+                };
+                
+                addDemoMessage(aiResponse);
+            }, 1500);
+        }
+
+        // Utility functions
+        function formatNumber(num) {
+            if (num >= 1000) {
+                return (num / 1000).toFixed(1) + 'K';
             }
+            return num.toString();
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initializePage();
             
             // Smooth scrolling for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1471,88 +1684,34 @@
                 });
             });
             
-            // Being card interactions
-            document.querySelectorAll('.being-card').forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    card.style.transform = 'translateY(-10px) scale(1.02)';
+            // Scroll animations
+            const animatedElements = document.querySelectorAll('.animate-fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'scale(1)';
+                    }
                 });
-                
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'translateY(0) scale(1)';
-                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transition = 'all 0.8s ease-out';
+                el.style.transform = 'scale(0.95)';
+                observer.observe(el);
             });
             
-            // Add click handlers for demo buttons
-            document.querySelectorAll('.btn-primary, .btn-secondary').forEach(btn => {
-                if (btn.textContent.includes('开始对话') || btn.textContent.includes('体验')) {
-                    btn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        // Scroll to demo section
-                        document.getElementById('demo').scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                        
-                        // Focus on input after scroll
-                        setTimeout(() => {
-                            const input = document.getElementById('demo-input');
-                            if (input) {
-                                input.focus();
-                                input.placeholder = '试试问：我如何提升创造力？';
-                            }
-                        }, 1000);
-                    });
-                }
-            });
+            // Demo input enter key handler
+            const demoInput = document.getElementById('demo-input');
+            if (demoInput) {
+                demoInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendDemoMessage();
+                    }
+                });
+            }
         });
-
-        // Add some interactive particles effect
-        function createParticles() {
-            const particleCount = 20;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.style.position = 'fixed';
-                particle.style.pointerEvents = 'none';
-                particle.style.width = '2px';
-                particle.style.height = '2px';
-                particle.style.background = `linear-gradient(45deg, #667eea, #764ba2)`;
-                particle.style.borderRadius = '50%';
-                particle.style.zIndex = '1';
-                particle.style.opacity = '0.6';
-                
-                // Random position
-                particle.style.left = Math.random() * window.innerWidth + 'px';
-                particle.style.top = Math.random() * window.innerHeight + 'px';
-                
-                // Random animation
-                particle.style.animation = `particleFloat ${3 + Math.random() * 4}s ease-in-out infinite`;
-                particle.style.animationDelay = Math.random() * 2 + 's';
-                
-                document.body.appendChild(particle);
-                
-                // Remove after animation
-                setTimeout(() => {
-                    particle.remove();
-                }, 8000);
-            }
-        }
-        
-        // Add particle animation CSS
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes particleFloat {
-                0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
-                25% { transform: translateY(-20px) rotate(90deg); opacity: 1; }
-                50% { transform: translateY(-10px) rotate(180deg); opacity: 0.8; }
-                75% { transform: translateY(-30px) rotate(270deg); opacity: 1; }
-            }
-        `;
-        document.head.appendChild(style);
-        
-        // Create particles periodically
-        setInterval(createParticles, 10000);
     </script>
 </body>
 </html>
-            
