@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepTalk - 让智慧无界，让对话无限</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #00ff9d;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(102, 126, 234, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 20%);
+        }
+        
+        .logo-font {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+            font-size: 2.5rem;
+            letter-spacing: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 0 15px rgba(0, 255, 157, 0.3);
+            animation: logoGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes logoGlow {
+            0% { text-shadow: 0 0 10px rgba(0, 255, 157, 0.3); }
+            100% { text-shadow: 0 0 25px rgba(0, 255, 157, 0.6), 0 0 35px rgba(102, 126, 234, 0.4); }
+        }
+        
+        .logo-sub {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-top: -10px;
+            text-align: center;
+            opacity: 0.8;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+        
+        .accent-bg {
+            background: rgba(0, 255, 157, 0.1);
+            border: 1px solid rgba(0, 255, 157, 0.2);
+        }
+        
+        .card {
+            background-color: rgba(26, 32, 44, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 255, 157, 0.2);
+            border-color: rgba(0, 255, 157, 0.3);
+        }
+        
+        .navbar {
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 157, 0.1);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transition: all 0.3s ease;
+            border: none;
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(0, 255, 157, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .hero {
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+        
+        .hero:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4;
+            animation: bgPan 30s infinite linear;
+        }
+        
+        @keyframes bgPan {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in-out forwards;
+            opacity: 0;
+        }
+        
+        .animate-slide-up {
+            animation: slideUp 0.8s ease-in-out forwards;
+            opacity: 0;
+        }
+        
+        .animate-slide-right {
+            animation: slideRight 0.8s ease-in-out forwards;
+            opacity: 0;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes slideRight {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .ai-element {
+            position: absolute;
+            background-color: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            backdrop-filter: blur(5px);
+            padding: 10px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 12px;
+            color: var(--accent);
+            z-index: 3;
+            pointer-events: none;
+            box-shadow: 0 0 15px rgba(0, 255, 157, 0.1);
+        }
+        
+        .data-stream {
+            position: absolute;
+            height: 100px;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--accent), var(--secondary), transparent);
+            z-index: 0;
+            animation: dataStream 2s linear infinite;
+            opacity: 0.3;
+        }
+        
+        @keyframes dataStream {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+        
+        .conversation-demo {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            animation: fadeInMessage 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeInMessage {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .message.talker {
+            justify-content: flex-end;
+        }
+        
+        .message-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            margin-right: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .message.talker .message-avatar {
+            margin-left: 10px;
+            margin-right: 0;
+            background: linear-gradient(135deg, #f39c12, #e74c3c);
+        }
+        
+        .message-content {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .message.talker .message-content {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+        
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            margin-left: 42px;
+        }
+        
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+        }
+        
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            animation: typingDot 1.4s infinite;
+        }
+        
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes typingDot {
+            0%, 60%, 100% { opacity: 0.3; }
+            30% { opacity: 1; }
+        }
+        
+        .being-card {
+            background: linear-gradient(145deg, rgba(26, 32, 44, 0.7), rgba(45, 55, 72, 0.7));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .being-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+            border-color: var(--accent);
+        }
+        
+        .being-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(102, 126, 234, 0.05) 45%, rgba(118, 75, 162, 0.05) 55%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .being-card:hover::before {
+            opacity: 1;
+        }
+        
+        .being-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .price-tag {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 8px;
+        }
+        
+        .ecosystem-diagram {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 20px;
+            align-items: center;
+            margin: 60px 0;
+        }
+        
+        .role-card {
+            background: linear-gradient(145deg, rgba(26, 32, 44, 0.8), rgba(45, 55, 72, 0.8));
+            padding: 30px 20px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .role-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+        
+        .center-diagram {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100vh;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        .input-field {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .ecosystem-diagram {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .hero {
+                min-height: 80vh;
+            }
+            
+            .logo-font {
+                font-size: 1.8rem;
+            }
+            
+            .conversation-demo {
+                max-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- AI Elements -->
+    <div class="ai-element" style="top: 120px; left: 10%;">
+        BEING_STATUS: ACTIVE <br>
+        TALKER_ID: TLK-2847 <br>
+        // AI Conversation Live
+    </div>
+    
+    <div class="ai-element" style="bottom: 150px; right: 15%;">
+        KNOWLEDGE_SYNC: 99.7% <br>
+        WISDOM_FLOW: OPTIMAL <br>
+        // Deep Learning Active
+    </div>
+    
+    <!-- Data streams -->
+    <div class="data-stream" style="left: 20%; animation-delay: 0s;"></div>
+    <div class="data-stream" style="left: 40%; animation-delay: 0.5s;"></div>
+    <div class="data-stream" style="left: 60%; animation-delay: 1s;"></div>
+    <div class="data-stream" style="left: 80%; animation-delay: 1.5s;"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar fixed w-full z-50 px-4 py-3">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="flex flex-col items-center">
+                <div class="logo-font">DeepTalk</div>
+                <div class="logo-sub">AI NATIVE DIALOGUE</div>
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#features" class="hover:text-blue-400 transition">功能特色</a>
+                <a href="#beings" class="hover:text-blue-400 transition">AI Being</a>
+                <a href="#demo" class="hover:text-blue-400 transition">对话演示</a>
+                <a href="#pricing" class="hover:text-blue-400 transition">定价方案</a>
+                <a href="#ecosystem" class="hover:text-blue-400 transition">生态体系</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#login" class="btn-primary px-6 py-2 rounded-full text-sm">开始对话</a>
+                <button class="md:hidden text-white" id="mobile-menu-btn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="container mx-auto px-4 hero-content">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-fade-in">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                        重新定义<br>
+                        <span class="gradient-text">对话的无限可能</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                        DeepTalk突破人类知识边界，通过AI Being技术让世界顶级专家的智慧触手可及。
+                        每一次对话都是智慧的碰撞与创新，让知识的传承和创造永不停歇。
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-12">
+                        <a href="#demo" class="btn-primary px-8 py-4 rounded-full font-medium text-center">
+                            <i class="fas fa-play mr-2"></i>
+                            体验AI对话
+                        </a>
+                        <a href="#beings" class="btn-secondary px-8 py-4 rounded-full font-medium text-center">
+                            <i class="fas fa-robot mr-2"></i>
+                            探索AI Being
+                        </a>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">1000+</div>
+                            <div class="text-sm text-gray-400">专业AI Being</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">50K+</div>
+                            <div class="text-sm text-gray-400">活跃对话者</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">24/7</div>
+                            <div class="text-sm text-gray-400">智慧对话</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">∞</div>
+                            <div class="text-sm text-gray-400">知识深度</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Live Conversation Demo -->
+                <div class="animate-fade-in">
+                    <div class="conversation-demo">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold">实时对话演示</h3>
+                            <div class="flex items-center text-green-400">
+                                <div class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                                Live
+                            </div>
+                        </div>
+                        
+                        <div id="conversation-container">
+                            <div class="message">
+                                <div class="message-avatar">🧠</div>
+                                <div class="message-content">
+                                    <div class="text-xs text-gray-400 mb-1">心理学大师Being</div>
+                                    <div>欢迎来到DeepTalk！我是基于荣格、弗洛伊德等大师理论构建的心理学AI Being。有什么心理学问题想要探讨吗？</div>
+                                </div>
+                            </div>
+                            
+                            <div class="message talker">
+                                <div class="message-content">
+                                    <div class="text-xs text-gray-400 mb-1">Talker: 李明</div>
+                                    <div>我最近在工作中总是感到焦虑，即使是很小的事情也会让我紧张。这是为什么呢？</div>
+                                </div>
+                                <div class="message-avatar">👨</div>
+                            </div>
+                            
+                            <div class="typing-indicator" id="typing">
+                                <div class="typing-dots">
+                                    <div class="typing-dot"></div>
+                                    <div class="typing-dot"></div>
+                                    <div class="typing-dot"></div>
+                                </div>
+                                <span class="ml-2 text-sm text-gray-400">心理学大师Being 正在思考...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="ecosystem" class="py-20 bg-gradient-to-b from-transparent to-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 animate-fade-in">
+                <h2 class="text-4xl font-bold mb-6">AI原生对话生态</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    突破传统播客限制，构建Being Creator、Talker、Listener三方协作的全新智慧共创模式
+                </p>
+            </div>
+            
+            <div class="ecosystem-diagram animate-fade-in">
+                <div class="role-card">
+                    <div class="text-4xl mb-4">🎨</div>
+                    <h3 class="text-xl font-bold mb-3 text-blue-400">Being Creator</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        专业领域专家，将深度知识转化为AI Being
+                    </p>
+                    <div class="bg-gray-800 p-3 rounded-lg text-xs">
+                        <div class="text-green-400">收益来源：</div>
+                        <div>• Being使用费分成</div>
+                        <div>• 知识资产持续变现</div>
+                        <div>• 专属Being定制服务</div>
+                    </div>
+                </div>
+                
+                <div class="center-diagram">
+                    <div class="text-5xl mb-4">🤖</div>
+                    <h3 class="text-2xl font-bold mb-3">AI Being</h3>
+                    <p class="text-white/90">
+                        承载专家智慧的AI对话伙伴<br>
+                        7×24小时深度智慧交流
+                    </p>
+                    <div class="mt-4 flex justify-center space-x-4">
+                        <div class="bg-white/20 p-2 rounded text-xs">无限知识</div>
+                        <div class="bg-white/20 p-2 rounded text-xs">实时学习</div>
+                        <div class="bg-white/20 p-2 rounded text-xs">深度思辨</div>
+                    </div>
+                </div>
+                
+                <div class="role-card">
+                    <div class="text-4xl mb-4">🎙️</div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-400">Talker</h3>
+                    <p class="text-gray-300 text-sm mb-4">
+                        对话引导者，负责话题策划和讨论引导
+                    </p>
+                    <div class="bg-gray-800 p-3 rounded-lg text-xs">
+                        <div class="text-green-400">核心能力：</div>
+                        <div>• 话题策划设计</div>
+                        <div>• 对话节奏掌控</div>
+                        <div>• 深度思辨引导</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="role-card max-w-md mx-auto animate-fade-in">
+                <div class="text-4xl mb-4">👥</div>
+                <h3 class="text-xl font-bold mb-3 text-green-400">Listener 参与用户</h3>
+                <p class="text-gray-300 text-sm mb-4">
+                    对话的参与者和共创者，实时影响内容走向
+                </p>
+                <div class="bg-gray-800 p-3 rounded-lg text-xs">
+                    <div class="text-green-400">参与方式：</div>
+                    <div>• 实时提问互动</div>
+                    <div>• 投票决策话题</div>
+                    <div>• 贡献个人观点</div>
+                    <div>• 智慧共创</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Beings Section -->
+    <section id="beings" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 animate-fade-in">
+                <h2 class="text-4xl font-bold mb-6">AI Being 智慧大师</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    汇聚全人类智慧精华，让每个领域的大师与您深度对话
+                </p>
+            </div>
+            
+            <!-- Being Categories -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in">
+                <div class="being-card">
+                    <div class="being-avatar">🧠</div>
+                    <h3 class="text-xl font-bold mb-2">心理学大师Being</h3>
+                    <p class="text-gray-400 text-sm mb-4">融合弗洛伊德、荣格、认知心理学精华</p>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="price-tag">99 DT/月</span>
+                        <div class="text-xs text-green-400">⚡ 在线</div>
+                    </div>
+                    <div class="space-y-2 text-xs text-gray-400">
+                        <div>• 深度心理分析</div>
+                        <div>• 情感咨询指导</div>
+                        <div>• 人格发展洞察</div>
+                    </div>
+                    <button class="btn-primary w-full mt-4 py-2 rounded-lg text-sm">
+                        开始对话
+                    </button>
+                </div>
+                
+                <div class="being-card">
+                    <div class="being-avatar">💰</div>
+                    <h3 class="text-xl font-bold mb-2">投资大师Being</h3>
+                    <p class="text-gray-400 text-sm mb-4">巴菲特、索罗斯投资智慧集成</p>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="price-tag">299 DT/月</span>
+                        <div class="text-xs text-green-400">⚡ 在线</div>
+                    </div>
+                    <div class="space-y-2 text-xs text-gray-400">
+                        <div>• 价值投资理念</div>
+                        <div>• 风险管理策略</div>
+                        <div>• 市场趋势分析</div>
+                    </div>
+                    <button class="btn-primary w-full mt-4 py-2 rounded-lg text-sm">
+                        开始对话
+                    </button>
+                </div>
+                
+                <div class="being-card">
+                    <div class="being-avatar">🧬</div>
+                    <h3 class="text-xl font-bold mb-2">生物学家Being</h3>
+                    <p class="text-gray-400 text-sm mb-4">从达尔文到现代基因学的生命奥秘</p>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="price-tag">199 DT/月</span>
+                        <div class="text-xs text-green-400">⚡ 在线</div>
+                    </div>
+                    <div class="space-y-2 text-xs text-gray-400">
+                        <div>• 进化生物学</div>
+                        <div>• 分子生物机制</div>
+                        <div>• 生态系统分析</div>
+                    </div>
+                    <button class="btn-primary w-full mt-4 py-2 rounded-lg text-sm">
+                        开始对话
+                    </button>
+                </div>
+                
+                <div class="being-card">
+                    <div class="being-avatar">🎨</div>
+                    <h3 class="text-xl font-bold mb-2">艺术大师Being</h3>
+                    <p class="text-gray-400 text-sm mb-4">达芬奇、毕加索创作理念传承</p>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="price-tag">149 DT/月</span>
+                        <div class="text-xs text-green-400">⚡ 在线</div>
+                    </div>
+                    <div class="space-y-2 text-xs text-gray-400">
+                        <div>• 艺术创作技法</div>
+                        <div>• 美学理论探讨</div>
+                        <div>• 艺术史解读</div>
+                    </div>
+                    <button class="btn-primary w-full mt-4 py-2 rounded-lg text-sm">
+                        开始对话
+                    </button>
+                </div>
+                
+                <div class="being-card">
+                    <div class="being-avatar">⚖️</div>
+                    <h3 class="text-xl font-bold mb-2">哲学家Being</h3>
+                    <p class="text-gray-400 text-sm mb-4">从古希腊到现代思想家的智慧</p>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="price-tag">179 DT/月</span>
+                        <div class="text-xs text-green-400">⚡ 在线</div>
+                    </div>
+                    <div class="space-y-2 text-xs text-gray-400">
+                        <div>• 人生哲学思辨</div>
+                        <div>• 伦理道德探讨</div>
+                        <div>• 存在主义分析</div>
+                    </div>
+                    <button class="btn-primary w-full mt-4 py-2 rounded-lg text-sm">
+                        开始对话
+                    </button>
+                </div>
+                
+                <div class="being-card">
+                    <div class="being-avatar">🚀</div>
+                    <h3 class="text-xl font-bold mb-2">物理学家Being</h3>
+                    <p class="text-gray-400 text-sm mb-4">爱因斯坦、霍金宇宙奥秘探索</p>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="price-tag">249 DT/月</span>
+                        <div class="text-xs text-green-400">⚡ 在线</div>
+                    </div>
+                    <div class="space-y-2 text-xs text-gray-400">
+                        <div>• 量子物理原理</div>
+                        <div>• 相对论理论</div>
+                        <div>• 宇宙学探索</div>
+                    </div>
+                    <button class="btn-primary w-full mt-4 py-2 rounded-lg text-sm">
+                        开始对话
+                    </button>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 animate-fade-in">
+                <a href="#" class="btn-secondary px-8 py-3 rounded-full">
+                    查看全部1000+ AI Being
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Demo Section -->
+    <section id="demo" class="py-20 bg-gradient-to-b from-gray-900 to-black">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 animate-fade-in">
+                <h2 class="text-4xl font-bold mb-6">实时对话演示</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    体验AI Being的深度对话能力，感受超越传统播客的智慧交流
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Conversation Interface -->
+                <div class="animate-fade-in">
+                    <div class="conversation-demo h-96">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center mr-3">
+                                    🧠
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">心理学大师Being</h3>
+                                    <p class="text-xs text-gray-400">专业深度 • 即时响应</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center text-green-400 text-sm">
+                                <div class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                                Live Demo
+                            </div>
+                        </div>
+                        
+                        <div id="demo-conversation" class="space-y-4 mb-4">
+                            <!-- Messages will be added dynamically -->
+                        </div>
+                        
+                        <div class="flex gap-2 mt-4">
+                            <input type="text" id="demo-input" placeholder="输入您的问题..." 
+                                   class="flex-1 input-field px-4 py-2 rounded-full text-sm">
+                            <button id="send-message" class="btn-primary px-6 py-2 rounded-full text-sm">
+                                发送
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Features List -->
+                <div class="animate-fade-in">
+                    <h3 class="text-2xl font-bold mb-6">AI原生对话特色</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-brain text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-2">无限知识整合</h4>
+                                <p class="text-gray-400 text-sm">AI Being整合全人类知识精华，提供超越任何单一专家的洞察深度，突破个人认知边界。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-green-500 to-blue-500 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-comments text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-2">实时深度互动</h4>
+                                <p class="text-gray-400 text-sm">用户可实时参与对话，提问互动，影响内容方向。每次对话都是动态演化的智慧创造过程。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-clock text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-2">7×24小时可用</h4>
+                                <p class="text-gray-400 text-sm">不受时间地点限制的专家级对话，AI Being能够进行深度思辨、知识碰撞，持续学习进化。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-users text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-2">多方协作生态</h4>
+                                <p class="text-gray-400 text-sm">Being Creator、Talker、Listener三方协作，让每个参与者都成为价值创造者和受益者。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 animate-fade-in">
+                <h2 class="text-4xl font-bold mb-6">突破性创新特色</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    重新定义对话体验，创造前所未有的智慧交流可能性
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card p-8 animate-fade-in">
+                    <div class="text-4xl mb-4">🌐</div>
+                    <h3 class="text-xl font-bold mb-4">知识无边界</h3>
+                    <p class="text-gray-400">
+                        AI Being整合全人类知识精华，让您能够与历史上最伟大的思想家进行深度对话，
+                        获得跨越时空的智慧洞察。
+                    </p>
+                </div>
+                
+                <div class="card p-8 animate-fade-in">
+                    <div class="text-4xl mb-4">⚡</div>
+                    <h3 class="text-xl font-bold mb-4">实时智慧碰撞</h3>
+                    <p class="text-gray-400">
+                        不同领域AI Being之间的思想碰撞，产生前所未有的创新洞察。
+                        每次对话都是独特的智慧创造过程。
+                    </p>
+                </div>
+                
+                <div class="card p-8 animate-fade-in">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="text-xl font-bold mb-4">深度个性化</h3>
+                    <p class="text-gray-400">
+                        基于您的兴趣、认知水平和学习目标，AI Being会动态调整对话深度和方向，
+                        实现真正的因材施教。
+                    </p>
+                </div>
+                
+                <div class="card p-8 animate-fade-in">
+                    <div class="text-4xl mb-4">💎</div>
+                    <h3 class="text-xl font-bold mb-4">知识资产化</h3>
+                    <p class="text-gray-400">
+                        专家知识转化为可持续变现的AI Being资产，创造者获得长期收益，
+                        实现知识价值的最大化释放。
+                    </p>
+                </div>
+                
+                <div class="card p-8 animate-fade-in">
+                    <div class="text-4xl mb-4">🚀</div>
+                    <h3 class="text-xl font-bold mb-4">智慧共创</h3>
+                    <p class="text-gray-400">
+                        从被动收听转变为主动参与，用户的每个问题和观点都能影响对话走向，
+                        真正实现智慧的共同创造。
+                    </p>
+                </div>
+                
+                <div class="card p-8 animate-fade-in">
+                    <div class="text-4xl mb-4">🔄</div>
+                    <h3 class="text-xl font-bold mb-4">持续进化</h3>
+                    <p class="text-gray-400">
+                        AI Being通过每次对话不断学习和进化，知识体系持续更新，
+                        始终保持前沿性和准确性。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gradient-to-b from-black to-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 animate-fade-in">
+                <h2 class="text-4xl font-bold mb-6">定价方案</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    选择最适合您的智慧对话方案，开启无限知识探索之旅
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Basic Plan -->
+                <div class="card p-8 animate-fade-in">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold mb-4">基础体验</h3>
+                        <div class="text-4xl font-bold mb-2">免费</div>
+                        <div class="text-gray-400 mb-6">永久免费使用</div>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            每日3次基础Being对话
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            参与公开对话互动
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            基础Being类型选择
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            社区讨论参与
+                        </li>
+                    </ul>
+                    <button class="btn-secondary w-full py-3 rounded-lg">
+                        立即开始
+                    </button>
+                </div>
+                
+                <!-- Pro Plan -->
+                <div class="card p-8 animate-fade-in border-2 border-blue-500 relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-1 rounded-full text-sm font-bold">
+                            推荐方案
+                        </span>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold mb-4">深度探索</h3>
+                        <div class="text-4xl font-bold mb-2">¥99</div>
+                        <div class="text-gray-400 mb-6">每月 / 199 DT Token</div>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            无限制Being对话次数
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            访问所有标准Being
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            实时对话互动参与
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            个性化Being推荐
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            基础数据分析报告
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            优先客服支持
+                        </li>
+                    </ul>
+                    <button class="btn-primary w-full py-3 rounded-lg">
+                        开始深度探索
+                    </button>
+                </div>
+                
+                <!-- Premium Plan -->
+                <div class="card p-8 animate-fade-in">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold mb-4">专业大师</h3>
+                        <div class="text-4xl font-bold mb-2">¥299</div>
+                        <div class="text-gray-400 mb-6">每月 / 599 DT Token</div>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            访问所有专业Being
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            预约专属对话时间
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            一对一深度咨询
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            Being个性化定制
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            专业学习路径规划
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-400 mr-3"></i>
+                            专属社群权限
+                        </li>
+                    </ul>
+                    <button class="btn-primary w-full py-3 rounded-lg">
+                        成为专业用户
+                    </button>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 animate-fade-in">
+                <p class="text-gray-400 mb-4">
+                    所有方案均支持DT Token支付，享受额外优惠
+                </p>
+                <a href="#" class="text-blue-400 hover:text-blue-300">
+                    了解DT Token经济模型
+                    <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-20 bg-gradient-to-r from-blue-900 to-purple-900">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center animate-fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">开启AI原生对话时代</h2>
+                <p class="text-xl text-gray-200 mb-8">
+                    订阅我们的最新动态，第一时间体验新的AI Being，探索智慧对话的无限可能
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+                    <input type="email" placeholder="输入您的邮箱" 
+                           class="input-field rounded-full px-6 py-3 w-full">
+                    <button class="btn-primary px-8 py-3 rounded-full font-medium whitespace-nowrap">
+                        立即订阅
+                    </button>
+                </div>
+                <p class="text-sm text-gray-300 mt-4">
+                    订阅即可获得100 DT Token新用户奖励
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-black">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <a href="#" class="flex flex-col items-start mb-4">
+                        <div class="logo-font text-2xl">DeepTalk</div>
+                        <div class="logo-sub text-xs">AI NATIVE DIALOGUE</div>
+                    </a>
+                    <p class="text-gray-400 mb-6">
+                        让智慧无界，让对话无限。重新定义人类与AI的协作方式，开启智慧共创新时代。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition">
+                            <i class="fab fa-medium"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">平台功能</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">AI Being市场</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">对话体验</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">创作者中心</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">社区讨论</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">数据分析</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">资源文档</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">项目白皮书</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">技术文档</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">DT Token经济</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">开发者指南</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">帮助中心</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">法律信息</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">服务条款</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">隐私政策</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">版权声明</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">联系我们</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+                <p>© 2025 DeepTalk. All rights reserved. | 让智慧无界，让对话无限</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Conversation Demo Data
+        const demoMessages = [
+            {
+                type: 'being',
+                name: '心理学大师Being',
+                avatar: '🧠',
+                content: '从认知行为学角度来看，工作焦虑往往源于我们对不确定性的恐惧和对完美的过度追求。这是一种防御机制，大脑试图通过担忧来"预防"可能的失败。'
+            },
+            {
+                type: 'user',
+                name: '用户A',
+                avatar: '👤',
+                content: '那我应该如何调整这种心态呢？'
+            },
+            {
+                type: 'being',
+                name: '心理学大师Being',
+                avatar: '🧠',
+                content: '建议尝试"认知重构"技巧：1) 识别焦虑触发的自动化思维；2) 质疑这些想法的现实性；3) 用更平衡的观点替代。比如将"我必须做到完美"改为"我可以尽力而为，从错误中学习"。'
+            },
+            {
+                type: 'talker',
+                name: 'Talker: 陈博士',
+                avatar: '🎙️',
+                content: '这让我想到荣格的个体化过程理论。Being，您认为焦虑是否也是自我成长的一种信号？'
+            }
+        ];
+
+        let currentMessageIndex = 0;
+        let isTyping = false;
+
+        // Auto-play conversation demo
+        function playConversationDemo() {
+            const container = document.getElementById('demo-conversation');
+            
+            function addMessage() {
+                if (currentMessageIndex >= demoMessages.length) {
+                    currentMessageIndex = 0;
+                    setTimeout(() => {
+                        container.innerHTML = '';
+                        playConversationDemo();
+                    }, 3000);
+                    return;
+                }
+
+                const message = demoMessages[currentMessageIndex];
+                const messageEl = document.createElement('div');
+                messageEl.className = `message ${message.type === 'user' || message.type === 'talker' ? 'talker' : ''}`;
+                
+                const avatarClass = message.type === 'user' || message.type === 'talker' ? 'order-2' : '';
+                const contentClass = message.type === 'user' || message.type === 'talker' ? 'order-1' : '';
+                
+                messageEl.innerHTML = `
+                    <div class="message-avatar ${avatarClass}">${message.avatar}</div>
+                    <div class="message-content ${contentClass}">
+                        <div class="text-xs text-gray-400 mb-1">${message.name}</div>
+                        <div>${message.content}</div>
+                    </div>
+                `;
+                
+                container.appendChild(messageEl);
+                container.scrollTop = container.scrollHeight;
+                
+                currentMessageIndex++;
+                setTimeout(addMessage, 4000);
+            }
+
+            addMessage();
+        }
+
+        // Interactive demo
+        function initInteractiveDemo() {
+            const input = document.getElementById('demo-input');
+            const sendBtn = document.getElementById('send-message');
+            const conversationContainer = document.getElementById('conversation-container');
+
+            const responses = [
+                "这是一个很有深度的问题。从心理学角度来看，每个人的内心世界都有其独特的复杂性...",
+                "您提到的现象在认知心理学中被称为'确认偏误'。让我们深入探讨一下这个概念...",
+                "这让我联想到弗洛伊德的防御机制理论。您的情况可能涉及投射或合理化...",
+                "从积极心理学的研究来看，这种体验实际上可能是个人成长的机会...",
+                "马斯洛的需求层次理论可以很好地解释您描述的状况..."
+            ];
+
+            function addUserMessage(text) {
+                const messageEl = document.createElement('div');
+                messageEl.className = 'message talker';
+                messageEl.innerHTML = `
+                    <div class="message-content">
+                        <div class="text-xs text-gray-400 mb-1">您</div>
+                        <div>${text}</div>
+                    </div>
+                    <div class="message-avatar">👤</div>
+                `;
+                conversationContainer.appendChild(messageEl);
+            }
+
+            function addTypingIndicator() {
+                const typingEl = document.createElement('div');
+                typingEl.className = 'typing-indicator';
+                typingEl.id = 'current-typing';
+                typingEl.innerHTML = `
+                    <div class="typing-dots">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                    <span class="ml-2 text-sm text-gray-400">心理学大师Being 正在思考...</span>
+                `;
+                conversationContainer.appendChild(typingEl);
+                conversationContainer.scrollTop = conversationContainer.scrollHeight;
+                return typingEl;
+            }
+
+            function addBeingResponse(text) {
+                const messageEl = document.createElement('div');
+                messageEl.className = 'message';
+                messageEl.innerHTML = `
+                    <div class="message-avatar">🧠</div>
+                    <div class="message-content">
+                        <div class="text-xs text-gray-400 mb-1">心理学大师Being</div>
+                        <div>${text}</div>
+                    </div>
+                `;
+                conversationContainer.appendChild(messageEl);
+                conversationContainer.scrollTop = conversationContainer.scrollHeight;
+            }
+
+            function sendMessage() {
+                const text = input.value.trim();
+                if (!text || isTyping) return;
+
+                addUserMessage(text);
+                input.value = '';
+                isTyping = true;
+
+                const typingEl = addTypingIndicator();
+                
+                setTimeout(() => {
+                    typingEl.remove();
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                    addBeingResponse(randomResponse);
+                    isTyping = false;
+                }, 2000);
+            }
+
+            sendBtn.addEventListener('click', sendMessage);
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') sendMessage();
+            });
+        }
+
+        // Create animated data streams
+        function createDataStreams() {
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const stream = document.createElement('div');
+                    stream.className = 'data-stream';
+                    stream.style.left = Math.random() * 100 + '%';
+                    stream.style.animationDelay = Math.random() * 2 + 's';
+                    document.body.appendChild(stream);
+                    
+                    setTimeout(() => {
+                        stream.remove();
+                    }, 4000);
+                }, i * 3000);
+            }
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            // Start data streams
+            createDataStreams();
+            setInterval(createDataStreams, 15000);
+            
+            // Initialize conversation demos
+            setTimeout(() => {
+                playConversationDemo();
+            }, 1000);
+            
+            initInteractiveDemo();
+            
+            // Scroll animations
+            const animatedElements = document.querySelectorAll('.animate-fade-in, .animate-slide-up, .animate-slide-right');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        if (entry.target.classList.contains('animate-slide-up')) {
+                            entry.target.style.transform = 'translateY(0)';
+                        }
+                        if (entry.target.classList.contains('animate-slide-right')) {
+                            entry.target.style.transform = 'translateX(0)';
+                        }
+                        if (entry.target.classList.contains('animate-fade-in')) {
+                            entry.target.style.transform = 'scale(1)';
+                        }
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transition = 'all 0.8s ease-out';
+                if (el.classList.contains('animate-slide-up')) {
+                    el.style.transform = 'translateY(50px)';
+                }
+                if (el.classList.contains('animate-slide-right')) {
+                    el.style.transform = 'translateX(-50px)';
+                }
+                if (el.classList.contains('animate-fade-in')) {
+                    el.style.transform = 'scale(0.95)';
+                }
+                observer.observe(el);
+            });
+            
+            // Mobile menu functionality
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('open');
+                    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : 'auto';
+                });
+            }
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Being card interactions
+            document.querySelectorAll('.being-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            // Add click handlers for demo buttons
+            document.querySelectorAll('.btn-primary, .btn-secondary').forEach(btn => {
+                if (btn.textContent.includes('开始对话') || btn.textContent.includes('体验')) {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        // Scroll to demo section
+                        document.getElementById('demo').scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Focus on input after scroll
+                        setTimeout(() => {
+                            const input = document.getElementById('demo-input');
+                            if (input) {
+                                input.focus();
+                                input.placeholder = '试试问：我如何提升创造力？';
+                            }
+                        }, 1000);
+                    });
+                }
+            });
+        });
+
+        // Add some interactive particles effect
+        function createParticles() {
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.pointerEvents = 'none';
+                particle.style.width = '2px';
+                particle.style.height = '2px';
+                particle.style.background = `linear-gradient(45deg, #667eea, #764ba2)`;
+                particle.style.borderRadius = '50%';
+                particle.style.zIndex = '1';
+                particle.style.opacity = '0.6';
+                
+                // Random position
+                particle.style.left = Math.random() * window.innerWidth + 'px';
+                particle.style.top = Math.random() * window.innerHeight + 'px';
+                
+                // Random animation
+                particle.style.animation = `particleFloat ${3 + Math.random() * 4}s ease-in-out infinite`;
+                particle.style.animationDelay = Math.random() * 2 + 's';
+                
+                document.body.appendChild(particle);
+                
+                // Remove after animation
+                setTimeout(() => {
+                    particle.remove();
+                }, 8000);
+            }
+        }
+        
+        // Add particle animation CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes particleFloat {
+                0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+                25% { transform: translateY(-20px) rotate(90deg); opacity: 1; }
+                50% { transform: translateY(-10px) rotate(180deg); opacity: 0.8; }
+                75% { transform: translateY(-30px) rotate(270deg); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Create particles periodically
+        setInterval(createParticles, 10000);
+    </script>
+</body>
+</html>
+            
